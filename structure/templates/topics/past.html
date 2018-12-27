@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends "topics/base.html" %}
+{% block nav_item_work %}active{% endblock nav_item_work %}
+  {% block body_block %}
+  {% load staticfiles %}
+  <center><h1>Past Projects</h1>
+  <div style="display:inline-block">
+    <a href="{% url 'topics:wny' %}" style="color:white;font-size:50px;display:inline-block;border-radius:8px;width:10cm;background:url('/static/images/graphics/bergen_a.png'); background-size:cover;">
+      <h2 style="margin-top:0.25cm;font-size:60px;">West New York Revisioned</h2></a>
+    <a href="{% url 'topics:pops' %}" style="color:black;font-size:50px;display:inline-block;border-radius:8px;width:10cm;height:5.5cm;background:url('/static/images/graphics/example.jpg'); background-size:cover;">
+      <h2 style="margin-top:0.25cm;font-size:60px;">NYC POPS Program Redesigns</h2></a>
+    <a href="{% url 'topics:pops' %}" style="color:white;font-size:50px;display:inline-block;border-radius:8px;width:10cm;height:6.1cm;background:url('/static/images/video/kikos.png'); background-size:cover;">
+      <h2 style="font-size:75px;margin-top:1.2cm">NJ Latino Historia</h2></a>
+    <a href="{% url 'topics:pops' %}" style="color:white;font-size:50px;display:inline-block;border-radius:8px;width:10cm;background:url('/static/images/graphics/ers_a.png'); background-size:cover;">
+      <h2 style="margin-top:0.25cm;font-size:60px;">Erseke Museum Report</h2></a>
+    </div>
+  </div>
+</center>
+  {% endblock %}
+</div>

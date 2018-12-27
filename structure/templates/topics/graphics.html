@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends "topics/base.html" %}
+{% block nav_item_work %}active{% endblock nav_item_work %}
+  {% block body_block %}
+  {% load staticfiles %}
+  <center><h1>Design</h1></center>
+  <div style="display:inline-block;">
+    <h3>click images to enlarger</h3>
+    <div class="container"style="padding:1cm">
+      <img style="width:150px;margin-bottom:0.25cm;" src="{% static "images/graphics/oa.png" %}" onclick="window.open('/static/images/graphics/oa.png', '_blank');">
+      <img style="width:200px;margin-bottom:0.25cm" src="{% static "images/graphics/mount.png" %}"onclick="window.open('/static/images/graphics/mount.png', '_blank');">
+      <img style="width:200px;margin-bottom:0.25cm" src="{% static "images/graphics/imsocio.png" %}"onclick="window.open('/static/images/graphics/imsocio.png', '_blank');">
+      <img style="width:200px;margin-bottom:0.25cm" src="{% static "images/graphics/museum.jpg" %}"onclick="window.open('/static/images/graphics/museum.jpg', '_blank');">
+      <img style="width:200px;margin-bottom:0.25cm" src="{% static "images/graphics/njlatino.jpg" %}"onclick="window.open('/static/images/graphics/njlatino.jpg', '_blank');">
+      <img style="width:200px;margin-bottom:0.25cm" src="{% static "images/graphics/charas_small.png" %}"onclick="window.open('/static/images/graphics/charas_small.png', '_blank');">
+      <img style="width:200px;margin-bottom:0.25cm" src="{% static "images/graphics/njlat.jpg" %}"onclick="window.open('/static/images/graphics/njlat.jpg', '_blank');">
+      <img style="width:200px;margin-bottom:0.25cm" src="{% static "images/graphics/example.jpg" %}"onclick="window.open('/static/images/graphics/example.jpg', '_blank');">
+    </div>
+    <div class="container" style="margin-bottom:2cm;">
+      <h3>Hover over pics to see originals</h3>
+      <img src="{% static "images/graphics/ers_a.png" %}"
+         onmouseover="this.src=('/static/images/graphics/ers_b.png');"
+         onmouseout="this.src=('/static/images/graphics/ers_a.png');"
+         style="height:8cm">
+       </img>
+       <img src="{% static "images/graphics/bergen_after.png" %}"
+         onmouseover="this.src=('/static/images/graphics/bergen_before.png');"
+         onmouseout="this.src=('/static/images/graphics/bergen_after.png');"
+         style="height:8cm">
+       </img>
+     </div>
+  </div>
+</center>
+  {% endblock %}
+</div>

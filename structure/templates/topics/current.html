@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends "topics/base.html" %}
+{% block nav_item_work %}active{% endblock nav_item_work %}
+  {% block body_block %}
+  {% load staticfiles %}
+  <center><h1>Current Projects</h1>
+  <h2>To know more about these projects, or collaborate <a href="{% url 'topics:contact' %}" style="color:black">contact me here</a>.</h2></center>
+  <h1 style="margin-bottom:10px;font-size:50px"><b>Art Sale Analysis</b></h1>
+  <h2 style="margin-bottom:10px;"><b>Goal:</b></h2>
+  <h3>I am seeing if there is a pattern to the prices of art work being sold at auction houses. Specifically, older paintings and drawing pieces sold from the most recognized auction house in the world.From collecting the data from those auction's data I will see if there is a consistent patteren to be able to create a predictive price model.</h3>
+  <h2><b>CURRENTLY</b></h2>
+  <h3>Datascraping the data through beautiful soup of each auction's house data.</h3>
+  <!-- <h1 style="margin-bottom:10px;font-size:50px"><b>Google AI Camera Kit</b></h1> -->
+  {% endblock %}

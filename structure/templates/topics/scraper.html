@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends "topics/base.html" %}
+{% block nav_item_work %}active{% endblock nav_item_work %}
+  {% block body_block %}
+  {% load staticfiles %}
+
+  <h1 style="font-size:45px">Christie's Auction House Data Scrape Analysis</h1>
+  <p>The project started from a friend who told me about her analysis of art to make a financial model for their prices. This sparked me to see for myself if there were different criteria the could determine the price of pieces of art. I choose Christie's Auction as the focus of this project.
+  <a class="pink" style="color:black;font-size:15px;" href="https://www.christies.com/" target="_blank"> Click here to see the scraped Christie Website.</a></p>
+  <a class='pink' style="font-size:20pt;color:black" href='https://github.com/gh15hidalgo/Christie-Data-Scrape.git' target="_blank">Click here to see all the Project's Python Code</a>
+  <h2 style="margin-top:0.5cm">Initial BS4 Data Scrape and Graphs</h2>
+
+  <p>To start the analysis, I did an initial scrape of Christie's Website. I created a python script using BS4 package that scraped all the auctions that Christie's posted on their website from 1998 to 2017.
+  <a class="pink" style="color:black;font-size:15px;" href="https://github.com/gh15hidalgo/Christie-Data-Scrape/blob/master/Christie_Web_BS4_Scrape.py" target="_blank"> Click here to see the Webscraping Python Script.</a> From the data collected, I cleaned it and created the graphs below that show trends in Christie's auction houses relating to location and the total sum of the items each locations sold.
+  <a class='pink' style="color:black;font-size:15px;" href="https://github.com/gh15hidalgo/Christie-Data-Scrape/blob/master/Auction_House_Graphs_and_%20Cleaning.ipynb" target="_blank"> Click here to see the code to clean the scraped data, and create Graphs shown below.</a></p>
+  <p><i>Click on the graphs to enlarge</i></p>
+  <div style="overflow: auto; white-space: nowrap;height:15cm">
+    <img style="height:10.5cm" src="https://www.gabrielhn.com/static/images/Graphs/Auction_Years.png" onclick="window.open('/static/images/Graphs/Auction_Years.png', '_blank');" />
+    <img style="height:10.6cm" src="https://www.gabrielhn.com/static/images/Graphs/Year_Sum.png"  onclick="window.open('/static/images/Graphs/Year_Sum.png', '_blank');" />
+    <img style="height:9cm" src="{% static "images/Graphs/Total_Sum.png" %}" onclick="window.open('/static/images/Graphs/Total_Sum.png', '_blank');" />
+    <img style="height:8.5cm" src="{% static "images/Graphs/Locations.png" %}" onclick="window.open('/static/images/Graphs/Locations.png', '_blank');" />
+  </div>
+  <center>
+  <h2>Deeper Selenium Christie Data Scrape and Cleaning</h2>
+  <p>Next, I used a selenium to scraper deeper into the Christie Website to get the amount of pieces of art sold at Christie’s auctions.
+  <a class='pink' style="font-size:10pt;color:black" href='https://github.com/gh15hidalgo/Christie-Data-Scrape/blob/master/Christie_Scrape_Selenium_Pieces_Amount.py' target="_blank">Click here to see the Python Selenium Scrape script.</a> Unfortunately, while scraping the data I found not all the auctions’ art pieces have been posted, or the webpage that they were posted had no similarities to scrap. However, with taking those to account there are still enough successfully scraped pages to see the distribution of the amount of items Christie sold.
+  <a class='pink' style="font-size:10pt;color:black" href='https://github.com/gh15hidalgo/Christie-Data-Scrape/blob/master/Selenium_Scrape_Null_Fill-in.py' target="_blank">Click here to see the Python code to check for unsuccessful links</a> and
+  <a class='pink' style="font-size:10pt;color:black" href='https://github.com/gh15hidalgo/Christie-Data-Scrape/blob/master/Auction_House_Graphs_and_%20Cleaning.ipynb' target="_blank">Click Here to see the cleaning code for making the graphs below.</a></p>
+  <i>Click on the graphs to enlarge</i></p>
+  <center style="margin-bottom:2cm">
+    <img style="height:5cm;" src="https://www.gabrielhn.com/static/images/Graphs/Pie.png" onclick="window.open('/static/images/Graphs/Pie.png', '_blank');" />
+    <img style="height:9cm" src="https://www.gabrielhn.com/static/images/Graphs/Item_Year.png" onclick="window.open('/static/images/Graphs/Item_Year.png', '_blank');" />
+    <img style="height:9cm" src="{% static "images/Graphs/Item_Location.png" %}" onclick="window.open('/static/images/Graphs/Item_Location.png', '_blank');" />
+  </center>
+  {% endblock %}

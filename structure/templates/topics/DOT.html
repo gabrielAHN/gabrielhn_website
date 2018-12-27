@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+{% extends "topics/base.html" %}
+{% block nav_item_work %}active{% endblock nav_item_work %}
+  {% block body_block %}
+  {% load staticfiles %}
+  <center>
+  <center style="width:90%"><h2 style='font-size:55px'><b> Using NYC DOT Mobility Survey Data to Help Unserved Citi Bike Areas</b></h2>
+  <h5> DOT Moblility survey has interesting data of NYC's resident's transportation habits. From this data I will do a small analysis of it, but primarly use it to combine it with<a class='pink' style="color:black;font-size:17px" href="https://www.gabrielhn.com/topics/bike/" target="_blank"> my past Citi Bike analysis</a> to see if I can identify if there are specific areas potentially being under served by Citi Bike.<h5>
+  <b><a class='pink' style="color:black;font-size:15px;margin-right:3cm" href="https://data.cityofnewyork.us/Transportation/Citywide-Mobility-Survey-Main-Survey/dd6w-hnq9" target="_blank"> Click here to Download the DOT Mobility Survey</a>
+  <a class='pink' style="color:black;font-size:15px;margin-right:3cm" href="https://github.com/gh15hidalgo/DOT-Survey-Anaylsis.git" target="_blank"> Click here to see the Project's code</a></b>
+  </br>
+  </br>
+  <h3><b><u>Prelimary Analysis of the DOT Mobility Survey Data</b></u></h3>
+  <h4><b>Graph of Individuals Surveyed Transportation Mode Use</b></h4>
+  <h5>Here is the breakdown of transportation modes by the amount people who said they use each mode:</h5>
+  <iframe height="200" width="70%" frameborder="0" scrolling="no" style="height:10cm" src="//plot.ly/~gh15hidalgo/38.embed"></iframe>
+  </br>
+  <h4><b>Where Individuals Surveyed Live and Work by Survey Zones</b></h4>
+  <h5>The map below shows the distribution of individuals surveyed where they work and live throughout the survey zones.</h5>
+  <iframe height="500" width="70%" src="https://www.gabrielhn.com/topics/dotsurvey" style="height:17cm"></iframe>
+  <table border="1" class="dataframe" style="float:right;border: 8px solid orange;;border-radius: 7px;font-family:sans-serif">  <thead>    <tr style="text-align: right;">      <th><center>Zone Name</center></th>      <th>Home</th>      <th>Work</th>    </tr>  </thead>  <tbody>    <tr>      <td>Inner Brooklyn</td>      <td>427</td>      <td>187</td>    </tr>    <tr>      <td>Inner Queens</td>      <td>352</td>      <td>102</td>    </tr>    <tr>      <td>Manhattan Core</td>      <td>291</td>      <td>852</td>    </tr>    <tr>      <td>Middle Queens</td>      <td>358</td>      <td>78</td>    </tr>    <tr>      <td>Northern Bronx</td>      <td>367</td>      <td>92</td>    </tr>    <tr>      <td>Northern Manhattan</td>      <td>394</td>      <td>152</td>    </tr>    <tr>      <td>Outer Brooklyn</td>      <td>436</td>      <td>145</td>    </tr>    <tr>      <td>Outer Queens</td>      <td>308</td>      <td>120</td>    </tr>    <tr>      <td>Southern Bronx</td>      <td>317</td>      <td>106</td>    </tr>    <tr>      <td>Staten Island</td>      <td>349</td>      <td>114</td>    </tr>  </tbody></table>
+
+  </center>
+  <center>
+  <h4><b>Primary Transportation Modes of Individuals Surveyed by Boro</b></h4>
+  <h5>These interactive Plotly pie charts allows you to see the percentage of transportation modes by the different boros.</h5>
+  <iframe width="1100" height="500" frameborder="0" scrolling="no" src="//plot.ly/~gh15hidalgo/70.embed"></iframe>
+  </center>
+  <center>
+  <h3 style="margin-top:0.25cm"><b><u>Now lets Focus onto the Citi Bike part of this anaylsis</u></b></h3>
+  <br>
+  <h4><b>D3 Graph Citi Bike User Usage</b></h4>
+  <h5 style="width:90%">This Interactive D3 graph shows if people use or do not use Citi Bike. Then for each groups if they do not what was the reason, and if they did how frequently did they use citi bike. Click on each slice to explore this data, hover to see the amount, and press the blue circle to go back:</h5>
+  <div id="one" style="height:8cm"></div>
+  <style>
+    path {
+      stroke: #fff;
+    }
+  </style>
+    <script src="//d3js.org/d3.v3.min.js">
+  </script>
+  <script>
+        var width = 500,
+            height = 500,
+            radius = (Math.min(width, height) / 2) - 10;
+        var formatNumber = d3.format(",d");
+        var x = d3.scale.linear()
+            .range([0, 2 * Math.PI]);
+        var y = d3.scale.sqrt()
+            .range([0, radius]);
+        var color = d3.scale.category20c();
+        var partition = d3.layout.partition()
+            .value(function(d) { return d.size; });
+        var arc = d3.svg.arc()
+            .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+            .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+            .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+            .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+        var svg = d3.select("#one").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+          .append("g")
+            .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
+        d3.json("https://www.gabrielhn.com/topics/json/", function(error, root) {
+          if (error) throw error;
+          svg.selectAll("path")
+              .data(partition.nodes(root))
+            .enter().append("path")
+              .attr("d", arc)
+              .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+              .on("click", click)
+            .append("title")
+              .text(function(d) { return d.name + "\n" + formatNumber(d.value); });
+        });
+        function click(d) {
+          svg.transition()
+              .duration(750)
+              .tween("scale", function() {
+                var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+                    yd = d3.interpolate(y.domain(), [d.y, 1]),
+                    yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+                return function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); };
+              })
+            .selectAll("path")
+              .attrTween("d", function(d) { return function() { return arc(d); }; });
+        }
+        d3.select(self.frameElement).style("height", height + "px");
+  </script>
+  <h4 style='margin-top:7cm'><b>Citi Bike Users Commuting Trends by Survey Zones</b></h4>
+  <h5 style="width:90%">The chord graph below shows the commuting flow of citi bike users. You can see a lot of them do commute within their own borough, but there
+  are large commuter groups that travel to the Manhattan core, and also to inner Queens and inner Brooklyn.</h5>
+  <iframe width="700" height="600" frameborder="0" scrolling="no" src="//plot.ly/~gh15hidalgo/66.embed"></iframe>
+  <h4 style='margin-top:0.5cm'><b>Where are the Underserved Citi Bike Zones?</b></h4></center>
+  <h5 style="width:90%">Through the use of PostGIS and Postgresql Database I was able to find the amount of citi bike activity,<a class='pink' style="color:black;font-size:15px;" href="{% url 'topics:bike' %}" target="_blank"> using code from my past project,</a> within the survey zones of the DOT Mobility Survey.
+  As for activity I mean when a citi bike trip started or ended at that dock. Then using folium I created the map below:</h5>
+  <center>
+  <iframe height="500" width="80%" src="https://www.gabrielhn.com/topics/citi_zone" style="height:17cm"></iframe>
+  </br>
+  <h5 style="width:90%">From the map above, I saw some areas that are being overserved and others being underserved so I created the tables below that show which zones they are. I broke down by the utilization of docks to dock activity to the amount of docks by zones, individuals who do not ride because it is not in their neighborhood, and finally need shown through the commuting from home to work.
+   <br/>
+  <br/><div style='background:yellow;;display: inline-block;font-size:40px;'><b>Underserved</b></div>      <div style='background:#ff6666;display: inline-block;font-size:40px;'><b>Overserved</b></div>
+  </h5>
+  <table border="1" class="dataframe" style="display: inline-block;border: 8px solid orange;;border-radius: 7px;font-family:sans-serif">  <thead>    <tr style="text-align: right;">      <th colspan="4"><center>Citi Bike # of Stations and Activity Utilization</center></th>  </thead> <tbody> <td>ZOnes</td>      <td># of Docks</td>      <td>Total Activity</td>      <td>Utilization</td>    </tr>     <tr>      <td>Manhattan Core</td>      <td>556</td>      <td>21085500</td>      <td>0.000026</td>    </tr>    <tr>      <td>Inner Brooklyn</td>      <td>158</td>      <td>6073622</td>      <td>0.000026</td>    </tr>    <tr style="background-color: #ff6666;">      <td>Northern Manhattan</td>      <td>16</td>      <td>894104</td>      <td>0.000018</td>    </tr>    <tr style="background-color: yellow;">      <td>Inner Queens</td>      <td>3</td>      <td>60880</td>      <td>0.000049</td>    </tr>  </tbody></table>
+  <table border="1" class="dataframe" style="display: inline-block;border: 8px solid orange;;border-radius: 7px;font-family:sans-serif">  <thead>    <tr style="text-align: right;">      <th colspan="2"><center>Amount of people by Survey Zones who do not</br> use Citi Bike because not in their Zone</center></th>  </thead>  <tbody>    <tr> <td><center>Zones</center></td>     <td><center>Amount</center></td>    </tr>  <tr>    <td>Northern Bronx</td>      <td>142</td>    </tr>    <tr>      <td>Outer Queens</td>      <td>133</td>    </tr>    <tr>      <td>Staten Island</td>      <td>128</td>    </tr>    <tr>      <td>Middle Queens</td>      <td>126</td>    </tr>    <tr>      <td>Southern Bronx</td>      <td>120</td>    </tr>    <tr>      <td>Outer Brooklyn</td>      <td>114</td>    </tr>    <tr  style="background-color: yellow;">      <td>Inner Queens</td>      <td>99</td>    </tr>    <tr style="background-color: #ff6666;">      <td>Northern Manhattan</td>      <td>87</td>    </tr>    <tr>      <td>Inner Brooklyn</td>      <td>62</td>    </tr>    <tr>      <td>Manhattan Core</td>      <td>10</td>    </tr>    <tr>      <td>Other</td>      <td>0</td>    </tr>  </tbody></table>
+  <table border="1" class="dataframe" style="display: inline-block;border: 8px solid orange;;border-radius: 7px;font-family:sans-serif">  <thead>    <tr style="text-align: right;">      <th colspan="3"><center>Amount of People Communting from</br> Home to Work by each Zone</center></th>  </thead> <tbody>   <td><center>Amount</center></td>      <td>Home Zone</td>      <td>Work Zone</td>    </tr>   <tr style="background-color: #ff6666;">      <td>133</td>      <td>Manhattan Core</td>      <td>Northern Manhattan</td>    </tr>    <tr style="background-color: yellow;">      <td>126</td>      <td>Manhattan Core</td>      <td>Inner Queens</td>    </tr>    <tr>      <td>119</td>      <td>Manhattan Core</td>      <td>Manhattan Core</td>    </tr>    <tr>      <td>110</td>      <td>Staten Island</td>      <td>Staten Island</td>    </tr>    <tr>      <td>100</td>      <td>Manhattan Core</td>      <td>Inner Brooklyn</td>    </tr>    <tr>      <td>94</td>      <td>Manhattan Core</td>      <td>Middle Queens</td>    </tr>    <tr>      <td>88</td>      <td>Inner Brooklyn</td>      <td>Inner Brooklyn</td>    </tr>    <tr>      <td>87</td>      <td>Outer Brooklyn</td>      <td>Outer Brooklyn</td>    </tr>    <tr style="background-color: #ff6666;">      <td>72</td>      <td>Northern Manhattan</td>      <td>Northern Manhattan</td>    </tr>    <tr>      <td>71</td>      <td>Manhattan Core</td>      <td>Outer Brooklyn</td>    </tr>  </tbody></table>
+  <h2 style="width:90%;padding:1.25cm"><b><u>North Manhattan is being Overserved, and Inner Queens is being Underserved</u></b></h2>
+  </center>
+  {% endblock %}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends "topics/base.html" %}
+{% block nav_item_work %}active{% endblock nav_item_work %}
+  {% block body_block %}
+  {% load staticfiles %}
+  <center><h1>3D Designs</h1></center>
+    <h2><b>Bergenline Redesigned</b></h2>
+    <h1 style="margin-bottom:10cm"><img width="500" src="{% static "images/graphics/bergen_2.jpg" %}"
+      onmouseover="this.src=('/static/images/graphics/bergen_2a.jpg');"
+      onmouseout="this.src=('/static/images/graphics/bergen_2.jpg');"
+      style="height:8cm;margin-top:0.75cm" align="left">
+    </img>
+    <iframe align="right" src="https://player.vimeo.com/video/231133430" width="540" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </h1>
+
+    <h2><b>New Brunswick Redesigned</b></h2>
+    <h1><img width="500" src="{% static "images/graphics/nb.jpg" %}"
+    </img>
+    <iframe align="right" src="https://player.vimeo.com/video/228559594" width="540" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </h1>
+    </center>
+  {% endblock %}

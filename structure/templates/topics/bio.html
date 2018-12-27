@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<a name="bio_1">
+{% extends "topics/base.html" %}
+  {% block body_block %}
+  {% load staticfiles %}
+  <div class="backgroundimage" style="height:725px">
+
+    <div class="container" style="width:500px;margin-left:1px;">
+      <h1 style="font-size:90px;font-weight: bold;color:white;">Bio</h1>
+      <div class="container" style="background-color:white;border-radius:8px;">
+          <h3 style="padding:7px;font-family:'Raleway', sans-serif;">I am Gabriel Hidalgo an urban planner, originally from Ecuador, who has worked in helping to shape cities and communites in NYC, NJ, and Albania through policy and tech.</h3>
+      </div>
+      <center><h1 style="margin-top:25px;color:white;font-size:40px;"><b>Get the highlights</b></h1>
+        <a button class="btn btn-light" style="font-size:20px;" href="{% static "images/resume.png" %}" target="_blank" ><b>Here</b></a></center>
+
+    <h1 style="margin-top:35px;color:white;font-size:40px;"><b><u>Or the Full Story Below:</u></b></h1>
+  </div>
+    </a>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="position:fixed">
+        <a class="pink" style="font-size:40px;color:white;text-shadow: 2px 2px 0px #FF00C4;padding:10px;" href="#bio_1">Bio</a>
+        <a class="pink" style="font-size:40px;color:white;text-shadow: 2px 2px 0px #FF00C4;padding:10px;" href="#bio_2">Now</a>
+        <a class="pink" style="font-size:40px;color:white;text-shadow: 2px 2px 0px #FF00C4;padding:10px;" href="#bio_3">Returning to NYC</a>
+        <a class="pink" style="font-size:40px;color:white;text-shadow: 2px 2px 0px #FF00C4;padding:10px;" href="#bio_4">Albania</a>
+    </nav>
+  </div>
+
+  <a name="bio_2">
+  <div style="margin-top:1cm;background:url('/static/images/now.jpg'); background-size:cover;height:20cm">
+    <div class="container">
+    <h1 style="color:white;align:left;font-size:80px;font-weight: bold;">Now</h1>
+    <div class="container" style="background-color:white;border-radius:10px;width:10cm;margin-right:19cm;margin-top:1cm">
+      <p style="">I am getting more familiar with the inner workings and political life within NYC through my work at the Taxi and Limousine Commission on the External Affairs Team. I have been able to be part of the political and industry side of the NYC Taxi industry, which recently has been experiencing extreme shifts because of emerging technology. Through this exposure, I deepened my knowledge of the relationships between government, technology, and communities.</p>
+        <p style="">Also, in my free time I am working on side projects that are more coding centered to create data collection systems and analysis of that data to better understanding technologies role within city design and policies.
+        <a style="color:black;font-size:15px;" class="pink" href="{% url 'topics:bike' %}" target="_blank">Check out my recent work here</a></p>
+    </div>
+    </div>
+  </div>
+  </a>
+</center>
+  <a name="bio_3">
+    <div style="margin-top:1cm;background:url('/static/images/Return.JPG'); background-size:cover;height:20cm;align:right;">
+      <div class="container" style="align:right;">
+      <h1 style="color:white;align:right;font-size:80px;font-weight: bold;">Returning to NYC</h1>
+      <div class="container" style="background-color:white;border-radius:10px;width:10cm;float:right;">
+        <p style="font-family:sans-serif;">Returning back from Albania, I immediately returned to work. I came back on a Wednesday and immediately started working on Friday at the<a style="color:black;font-size:15px;" class="pink" href="http://www.gvshp.org/_gvshp/index.htm" target="_blank"> Greenwich Village Society for Historic Preservation (GVSHP)</a> in NYC. That quick turnaround eased me into the transition back into life, and introduced me to architecture, organized community activism, and NYC politics. GVSHP taught me about the inner workings of cities, and helped me build personal connections to the NYC communities GVSHP was active in.</p>
+          <p style="font-family:sans-serif;">However, I joined to pursuit my interest in architecture, but as I learned more about the field I found it was not for me so I left to do freelance work, learn more skills, and grow my network.</p>
+           <p>During these times I was starting personal projects like<a style="color:black;font-size:15px;" class="pink" href="{% url 'topics:museum' %} " target="_blank"> NJ Latino Historias</a>, and <a style="color:black;font-size:15px;" class="pink" href="{% url 'topics:pops' %}" target="_blank">POPS Programs Redesigns.</a></p>
+      </div>
+      </div>
+    </div>
+  </a>
+
+  <div style="margin-top:1cm;background:url('/static/images/alb.jpg'); background-size:cover;height:20cm">
+    <a name="bio_4">
+    <div class="container">
+    <h1 style="color:black;align:left;font-size:80px;font-weight: bold;">Albania</h1>
+    <div class="container" style="background-color:white;border-radius:10px;width:10cm;margin-right:19cm;">
+      <p style="font-family:sans-serif;">I joined Peace Corp to challenge myself by going to a place I had no knowledge of to do a job that I was passionate about, urban development. My experience far surpassed that challenge, and helped me define my thinking of a communities’ role in my own personal development.</p>
+      <p style="font-family:sans-serif;">I was able to be part of large scale project planning and designs within the small community of Erseke where I lived, and who despite me being an outsider welcomed me into the community. Working as an urban planner in the city government, taught me about the complexity of politics especially taking to count the cultural and community dimensions that were different from what I was used to back in the USA. Plus, the importance of building relationships to help a community improve and develop. <a style="color:black;font-size:15px;" class="pink" href="{% url 'topics:museum' %}" target="_blank"> Click Here to check out my Erseke museum project.</a></p>
+    </div>
+    </div>
+  </div>
+  </a>
+  <div class="container" style="margin:7cm">
+
+  </div>
+  {% endblock %}

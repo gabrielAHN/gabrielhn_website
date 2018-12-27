@@ -1,0 +1,14 @@
+.container {
+  position: relative;
+  width: 50%;
+}
+.image{
+  display: block;
+}
+.overlay{
+  background-color: #008CBA;
+}
+
+.container:hover .overlay{
+  opacity: 1;
+}

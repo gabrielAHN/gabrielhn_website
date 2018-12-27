@@ -1,0 +1,18 @@
+body{
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+h1{
+  font-family:'Raleway', sans-serif;
+  font-size: 60px;
+  color: white;
+}
+h3{
+  color: white;
+}
+
+a:hover{
+  text-shadow: 2px 2px 0px #FF00C4;
+}

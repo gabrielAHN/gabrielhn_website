@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% extends "topics/base.html" %}
+{% block nav_item_work %}active{% endblock nav_item_work %}
+  {% block body_block %}
+  {% load staticfiles %}
+  <center><h1 style="font-size:40px;"><b>Citi Bike 2017 Trip Analysis</b></h1></center>
+  <h4> This project is an exploration of NYC Citi Bike 2017 Trip Data to see how people use the service, through the use of folium.</h4>
+  <center>
+  <a class='pink' style="color:black;font-size:15px;margin-right:3cm" href="https://s3.amazonaws.com/tripdata/index.html" target="_blank"> Click here to Download the Citi Bike data Used</a>
+  <a class='pink' style="color:black;font-size:15px;" href="https://github.com/gh15hidalgo/Citi-Bike-Analysis" target="_blank"> Click here to see all the code from this project</a>
+  <br>
+  <h2><b>User Analysis</b></h2>
+  <h8><a class='pink' style="color:black;font-size:20px;margin-top:2cm;" href="https://github.com/gh15hidalgo/Citi-Bike-Analysis/blob/master/Trips%20Graphs%20and%20Map.ipynb" target="_blank">Click here to see code</a></h8>
+  <h4>First, I started to see what kind of users use citi bike, and when they use the service:</h4>
+  <h6><i>Click graphs to view full screen</i></h6>
+    <img src="https://www.gabrielhn.com/static/images/citi_graph/pics/citi_users.png" width="450" onclick="window.open('https://www.gabrielhn.com/static/images/citi_graph/pics/citi_users.png', '_blank');" />
+    <img src="https://www.gabrielhn.com/static/images/citi_graph/pics/citi_months.png" width="450" onclick="window.open('https://www.gabrielhn.com/static/images/citi_graph/pics/citi_months.png', '_blank');"/>
+    <img src="https://www.gabrielhn.com/static/images/citi_graph/pics/citi_hours.png" height="450" onclick="window.open('https://www.gabrielhn.com/static/images/citi_graph/pics/citi_hours.png', '_blank');"/>
+
+  <center style="margin-top:0.5cm">
+  <center>
+  <h2 style="margin-top:0.5cm"><b>Trip Route Analysis</b></h2>
+  <h8><a class='pink' style="color:black;font-size:20px;margin-top:2cm;" href="https://github.com/gh15hidalgo/Citi-Bike-Analysis/blob/master/Trips%20Graphs%20and%20Map.ipynb" target="_blank">Click here to see code</a></h8>
+  <h5>Here I am looking into what routes are the most popular for citi bike trips. I graphed the top ten trips to another dock, and the top ten trips returned to the same dock. These routes were determined by
+  Mapbox API picking the most efficient route from one dock to the other and is not the official route taken. Explore this data in the the map below:</h5>
+  <a class='pink' style="color:black;font-size:15px;margin-bottom:4cm" href="https://www.gabrielhn.com/topics/trips" target="_blank">Map Full Screen</a>
+
+  <br>
+  <br>
+  <div>
+    <div style="" style="font-size:12px;">
+        <iframe height="100%" width="100%" src="https://www.gabrielhn.com/topics/trips" style="height:15cm;width:16cm;float:left;margin-left:1cm"></iframe>
+        <div style="">
+            <h5><b>Legend</b></h5>
+            <ul style="list-style: none;text-align: left;">
+                <li><h7><img style="width:20px;margin-left:2cm" src="https://www.gabrielhn.com/static/images/citi_graph/pics/start.png"> Start of Route</h7></li>
+                <li><h7><img style="width:20px;margin-left:2cm" src="https://www.gabrielhn.com/static/images/citi_graph/pics/end.png">  End of Route</h7></li>
+        </ul>
+        </div>
+        <h6>Top 10 Trips to Another Dock
+            <table border="1" class="dataframe" style="font-size:12px">  <thead>    <tr style="text-align: right;">      <th><center>Dock Start</center></th>      <th><center>Dock End</center></th>      <th>Amount of Trips</th>    </tr>  </thead>  <tbody>    <tr>      <td>Central Park S &amp; 6 Ave</td>      <td>5 Ave &amp; E 88 St</td>      <td>6318</td>    </tr>    <tr>      <td>12 Ave &amp; W 40 St</td>      <td>West St &amp; Chambers St</td>      <td>5403</td>    </tr>    <tr>      <td>W 21 St &amp; 6 Ave</td>      <td>9 Ave &amp; W 22 St</td>      <td>4831</td>    </tr>    <tr>      <td>E 7 St &amp; Avenue A</td>      <td>Cooper Square &amp; E 7 St</td>      <td>4561</td>    </tr>    <tr>      <td>Pershing Square North</td>      <td>Broadway &amp; W 32 St</td>      <td>4521</td>    </tr>    <tr>      <td>Pershing Square North</td>      <td>E 24 St &amp; Park Ave S</td>      <td>4403</td>    </tr>    <tr>      <td>West St &amp; Chambers St</td>      <td>12 Ave &amp; W 40 St</td>      <td>4335</td>    </tr>    <tr>      <td>Pershing Square North</td>      <td>W 33 St &amp; 7 Ave</td>      <td>4296</td>    </tr>    <tr>      <td>S 4 St &amp; Wythe Ave</td>      <td>N 6 St &amp; Bedford Ave</td>      <td>4217</td>    </tr>    <tr>      <td>N 6 St &amp; Bedford Ave</td>      <td>Wythe Ave &amp; Metropolitan Ave</td>      <td>4188</td>    </tr>  </tbody>
+            </table></h6>
+        <h6>Top 10 Trips to the Same Dock
+            <table border="1" class="dataframe" style="font-size:12px">  <thead>    <tr style="text-align: right;">      <th><center>Dock</center></th>      <th>Amount of Trips</th>    </tr>  </thead>  <tbody>    <tr>      <td>Central Park S &amp; 6 Ave</td>      <td>7169</td>    </tr>    <tr>      <td>Grand Army Plaza &amp; Central Park S</td>      <td>5670</td>    </tr>    <tr>      <td>Centre St &amp; Chambers St</td>      <td>4718</td>    </tr>    <tr>      <td>Greenwich Ave &amp; Charles St</td>      <td>4239</td>    </tr>    <tr>      <td>Soissons Landing</td>      <td>3773</td>    </tr>    <tr>      <td>Yankee Ferry Terminal</td>      <td>3715</td>    </tr>    <tr>      <td>12 Ave &amp; W 40 St</td>      <td>3291</td>    </tr>    <tr>      <td>West Drive &amp; Prospect Park West</td>      <td>3219</td>    </tr>    <tr>      <td>5 Ave &amp; E 73 St</td>      <td>3137</td>    </tr>    <tr>      <td>West St &amp; Chambers St</td>      <td>3025</td>    </tr>  </tbody>
+            </table></h6>
+    </div>
+  </div>
+
+
+  </center>
+  <br style="clear: both">
+
+  <div>
+  <h2 style="margin-top:0.5cm"><b>Dock Usage Map</b></h2>
+  <center>
+  <h5> I created a folium map that shows the distribution of when a trip starts and ends at each dock through colors to better spot the difference between the amounts, and also radius size for the amount of trips. Included in this map are also the top 10 used Citi bike docks and two layers for trips started and ended at each station. Explore all this data below: </h5>
+  <a class='pink' style="color:black;font-size:15px;margin-bottom:2cm" href="https://www.gabrielhn.com/topics/bike_amount" target="_blank">Map Full Screen</a></center>
+      <div style="float:left">
+        <center>
+        <h5>Legend</h5>
+        <ul style="list-style: none;text-align: left;">
+            <li><h7><img style="width:20px;" src="https://www.gabrielhn.com/static/images/citi_graph/pics/blue.png">    Majority of started bike trips at the Dock</h7></li>
+            <li><h7><img style="width:20px;" src="https://www.gabrielhn.com/static/images/citi_graph/pics/yellow.png">    Similiar amount of trips started and ended<br>
+            at the Dock</h7></li>
+            <li><h7><img style="width:20px;" src="https://www.gabrielhn.com/static/images/citi_graph/pics/red.png"> Majority of ended bike trips at the Dock</h7></li>
+            <li><h7><img style="width:20px;" src="https://www.gabrielhn.com/static/images/citi_graph/pics/stars.png"> Top Ten Used Citi Bike Dock</h7></li>
+        </ul>
+      </center>
+      </div>
+      <div style="float:right;width:15cm">
+        <h8 style="font-size:12px"><b>Note:</b>
+        I colored differentiated the major usages of each dock by a dock having more than 55% of either end or start total trips.
+        Additionally, I determined the radius size of each circle by dividing each corresponding dock count by the max dock amount of the layer it was part of.
+        </h8>
+        <br>
+        <h8><a class='pink' style="color:black;font-size:20px;margin-top:2cm;" href="https://github.com/gh15hidalgo/Citi-Bike-Analysis/blob/master/Folium%20Distribution.py" target="_blank">Click here to see code</a></h8>
+      </div>
+  <center>
+  <iframe height="100%" width="100%" src="https://www.gabrielhn.com/topics/bike_amount" style="height:18cm;margin-bottom:2cm"></iframe>
+
+
+
+  </center>
+  {% endblock %}

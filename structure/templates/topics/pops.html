@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "topics/base.html" %}
+{% block nav_item_work %}active{% endblock nav_item_work %}
+  {% block body_block %}
+  {% load staticfiles %}
+  <center><h1 style="font-size:40px">NYC POPS Program Redesigns</h1>
+  <h4 style="margin-bottom:1cm">Private-Open-Public-Space(POPS) are spaces where the public has access to private areas in certain buildings. New York City has a program to let the public know about these spaces and to protect them from private owners who would deny the public access to them. Part of my project involves helping to redesign the website to
+    better communicate their locations and how to rate them better.</h4>
+  <div class="container">
+      <h3><img style="width:400px"; align="left" src="{% static "images/graphics/example.jpg" %}" onclick="window.open('/static/images/graphics/example.jpg', '_blank');"></h3>
+      <h2><b>Simplified Graphics</b></h2></center><h3>  To teach the public more about these spaces I created a graphic that simplifies the city rules for POPS. This also helps owners by simplifing the basic POPS rules and to know if they are in complaince with them.</h3>
+      <h3 style="margin-top:1cm"><i>Click on the image to enlarge</i></h3>
+  </div>
+
+  <div class="container" style="margin-bottom:5cm;margin-top:6cm">
+    <iframe align="right" src="https://www.google.com/maps/d/embed?mid=1pvYHpSsLyz2jcWy5N6E2oQiL1S0" width="500" height="350"></iframe>
+    <center><h2><center><b>Alternative Map</b></h2></center>
+  <h3> The current POPS Map has many identical POPS icons on top of each other with no distinction between them. So I am suggesting adding the rating system to the map icons. This will promote good rated spaces, pointing out the bad ones, and promote the unrated ones.</h3>
+  </div>
+
+
+  </center>
+  {% endblock %}

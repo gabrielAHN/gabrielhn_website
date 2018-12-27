@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+{% extends "topics/base.html" %}
+{% block nav_item_work %}active{% endblock nav_item_work %}
+  {% block body_block %}
+  {% load staticfiles %}
+  <style>
+
+#myheader.wrapper{
+  display: grid;
+  grid-template-columns:  15% 35% 50%;
+  grid-template-rows: 3fr 1fr 1fr
+  grid-gap: 1em;
+  width:100%
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns:  1fr;
+}
+.wrapper{
+  display: grid;
+
+}
+#choices.wrapper{
+  display: grid;
+  grid-template-rows: 2fr;
+}
+
+.item{
+
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    font-weight: bold;
+    color: gray;
+    text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff;
+}
+.item:hover{
+        opacity: 0.3;
+        visibility: visible;
+    }
+.hover{
+}
+
+.hover:hover{
+        opacity: 0.3;
+    }
+
+.container{
+    display:none;
+
+#choices.container{
+    display:none;
+    border: 2px dashed rgba(114, 186, 94, 0.35);
+}
+#choices2.container{
+    display:none;
+    border: 2px dashed rgba(114, 186, 94, 0.35);
+}
+#choices3.container{
+    display:none;
+    border: 2px dashed rgba(114, 186, 94, 0.35);
+}
+
+</style>
+</head>
+<body>
+<center >
+<h1>Coding Portfolio</h1>
+  <div class="wrapper" id="myheader" >
+      <div class="grid-item">
+          <div class="wrapper">
+            <div class="item" style="line-height: 50px;background:url('/static/images/coding_portfolio/python.png');background-size:cover;" onclick="myFunction1()">
+              <h2 id='word1' style="margin-top:48px;">Python</h2>
+            </div>
+            <div class="item" style="line-height: 50px;background:url('/static/images/coding_portfolio/website.png');background-size: 100% 100%;background-repeat: no-repeat;" onclick="myFunction2()">
+              <h2 id='word2' style="margin-top:38px">Web Design</h2>
+            </div>
+            <div class="item" style="line-height: 50px;background:url('/static/images/coding_portfolio/database.png');background-size: 100% 100%;background-repeat: no-repeat;" onclick="myFunction3()">
+              <h2 id='word3' style="margin-top:49px">Database</h2>
+            </div>
+          </div>
+      </div>
+      <div class="container" style="display:block; back;border: white;" id="filler"></div>
+          <div class="container" id="python">
+              <div class="wrapper" id="choices">
+                  <center>
+                   <div style="border: 7px solid #5A8DAD;padding:4px;border-radius: 15px">
+                      <h4 class="hover" onclick="pythonfunction1()">Plotly</h4>
+                      <h4 class="hover" onclick="pythonfunction2()">Selenium</h4>
+                      <h4 class="hover" onclick="pythonfunction3()">Django</h4>
+                      <h4 class="hover" onclick="pythonfunction4()">Folium</h4>
+                   </div>
+                   <div class="container" id="plotly" style="margin-top:1cm">
+                       <p>I use plotly graphs throughout my projects to better depict data.</p>
+                       <p></p>Below are projects I have used it:</p>
+                       <a class='pink' href="{% url 'topics:DOT' %}" style="color:black;font-size:15px">NYC DOT Mobility Survey 2017 Dive</a><br>
+                       <a class='pink' href="{% url 'topics:bike' %}" style="color:black;font-size:15px">Citi Bike & Folium Maps</a><br>
+                       <a class='pink' href="{% url 'topics:scraper' %}" style="color:black;font-size:15px">Christie Data Scrape</a>
+                   </div>
+                   <div class="container" id="selenium" style="margin-top:1cm">
+                       <p>I used Selenium web scraper to collect data from websites that do not have APIs, but interesting datasets. Like Christie's
+                       Auction house and City Learner where I scrape sites for city content</p>
+                       <p>Check out these project below:</p>
+                       <a class='pink' href="{% url 'topics:scraper' %}" style="color:black;font-size:15px">Christie Data Scrape</a><br>
+                       <a class='pink' href="{% url 'topics:city' %}" style="color:black;font-size:15px">City Learner</a>
+                   </div>
+                   <div class="container" id="django" style="margin-top:1cm">
+                       <p>This website is built on a django web app, and hosted by pythonanywhere.</p>
+                       <p>To explore the website code visit:</p>
+                       <a class='pink' href="{% url 'topics:scraper' %}" style="color:black;font-size:15px">Christie Data Scrape</a>
+                   </div>
+                   <div class="container" id="folium" style="margin-top:1cm">
+                       <p>I used folium to depict locational data of citibike trips or NYC DOT Survey data.</p>
+                       <p>Check out those project below:</p>
+                       <a class='pink' href="{% url 'topics:bike' %}" style="color:black;font-size:15px">Citi Bike & Folium Maps</a><br>
+                       <a class='pink' href="{% url 'topics:DOT' %}" style="color:black;font-size:15px">NYC DOT Mobility Survey 2017 Dive</a>
+                   </div>
+                  </center>
+          </div>
+          </div>
+          <div class="container" id="web">
+               <div class="wrapper" id="choices2">
+                  <center>
+                   <div style="border: 7px solid #ed0874;padding:4px;border-radius: 15px">
+                      <h4 class="hover" onclick="webfunction1()">HTML/CSS</h4>
+                      <h4 class="hover" onclick="webfunction2()">JS Intergration</li>
+                      <h4 class="hover" onclick="webfunction3()">Django</li>
+                   </div>
+                   <div class="container" id="html" style="margin-top:1cm">
+                       <p>I utilized CSS/HTML to create this website so explore around</p>
+                       <p>or check out the website code below:</p>
+                       <a class='pink' href="{% url 'topics:scraper' %}" style="color:black;font-size:15px">Christie Data Scrape</a><br>
+                   </div>
+                   <div class="container" id="js" style="margin-top:1cm">
+                       <p>To animate and create interactive graphs I have intergrated Javascript through my website.</p>
+                       <p>Check out the project below:</p>
+                       <a class='pink' href="{% url 'topics:DOT' %}" style="color:black;font-size:15px">NYC DOT Mobility Survey 2017 Dive</a>
+                   </div>
+                   <div class="container" id="w_django" style="margin-top:1cm">
+                       <p>This </p>
+                       <p>Check out the project below:</p>
+                       <a class='pink' href="{% url 'topics:scraper' %}" style="color:black;font-size:15px">Christie Data Scrape</a><br>
+                       <a class='pink' href="{% url 'topics:city' %}" style="color:black;font-size:15px">City Learner</a>
+                   </div>
+                  </center>
+          </div>
+          </div>
+          <div class="container" id="Databases">
+               <div class="wrapper" id="choices3">
+                  <center>
+                   <div style="border: 7px solid #5db2e3;padding:4px;border-radius: 15px">
+                      <h4 class="hover" onclick="databasefunction1()">Postgresql</h4>
+                      <h4 class="hover" onclick="databasefunction2()">Mysql</h4>
+                   </div>
+                   <div class="container" id="postgres" style="margin-top:1cm">
+                       <p>I used Postgresql in combination with PostGIS to do spatial analysis on large spatial data sets like in my NYC DOT analysis.</p>
+                       <p>Check out the project below:</p>
+                       <a class='pink' href="{% url 'topics:DOT' %}" style="color:black;font-size:15px">NYC DOT Mobility Survey 2017 Dive</a>
+                   </div>
+                   <div class="container" id="mysql" style="margin-top:1cm">
+                       <p>This website uses mysql database to collect data from the forms for the city learner newsletter.</p>
+                       <p>Check out the project below:</p>
+                       <a class='pink' href="{% url 'topics:city' %}" style="color:black;font-size:15px">City Learner</a>
+                   </div>
+                  </center>
+          </div>
+          </div>
+      <div style="object-fit: contain;" class='animate'>
+
+        <img width="100%" class="active" src="{% static "images/coding_portfolio/animated.gif" %}">
+      </div>
+
+      <script>
+
+      function myFunction1() {
+
+       document.getElementById("word1").style.color='#5A8DAD';
+       document.getElementById("word2").style.color='gray';
+       document.getElementById("word3").style.color='gray';
+
+       document.getElementById("filler").style.display = "none";
+
+       document.getElementById("python").style.display = "block";
+
+       document.getElementById("web").style.display = "none";
+
+       document.getElementById("Databases").style.display = "none";
+
+
+
+        }
+
+
+    function myFunction2() {
+
+      document.getElementById("word1").style.color='gray';
+      document.getElementById("word2").style.color='#ed0874';
+      document.getElementById("word3").style.color='gray';
+
+      document.getElementById("filler").style.display = "none";
+
+      document.getElementById("python").style.display = "none";
+
+      document.getElementById("web").style.display = "block";
+
+      document.getElementById("Databases").style.display = "none";
+
+    }
+
+    function myFunction3() {
+
+      document.getElementById("word1").style.color='gray';
+      document.getElementById("word2").style.color='gray';
+      document.getElementById("word3").style.color='#5db2e3';
+
+      document.getElementById("filler").style.display = "none";
+
+      document.getElementById("python").style.display = "none";
+
+      document.getElementById("web").style.display = "none";
+
+      document.getElementById("Databases").style.display = "block";
+
+
+    }
+
+    function pythonfunction1() {
+
+       document.getElementById("plotly").style.display = "block";
+
+       document.getElementById("selenium").style.display = "none";
+
+       document.getElementById("django").style.display = "none";
+
+       document.getElementById("folium").style.display = "none";
+
+        }
+    function pythonfunction2() {
+
+
+       document.getElementById("plotly").style.display = "none";
+
+       document.getElementById("selenium").style.display = "block";
+
+       document.getElementById("django").style.display = "none";
+
+       document.getElementById("folium").style.display = "none";
+
+        }
+
+    function pythonfunction3() {
+
+       document.getElementById("selenium").style.display = "none";
+
+       document.getElementById("plotly").style.display = "none";
+
+       document.getElementById("django").style.display = "block";
+
+       document.getElementById("folium").style.display = "none";
+
+        }
+
+    function pythonfunction4() {
+
+       document.getElementById("selenium").style.display = "none";
+
+       document.getElementById("plotly").style.display = "none";
+
+       document.getElementById("django").style.display = "none";
+
+       document.getElementById("folium").style.display = "block";
+    }
+
+    function webfunction1() {
+
+       document.getElementById("html").style.display = "block";
+
+       document.getElementById("js").style.display = "none";
+
+       document.getElementById("w_django").style.display = "none";
+
+        }
+
+    function webfunction2() {
+
+       document.getElementById("html").style.display = "none";
+
+       document.getElementById("js").style.display = "block";
+
+       document.getElementById("w_django").style.display = "none";
+
+        }
+
+    function webfunction3() {
+
+       document.getElementById("html").style.display = "none";
+
+       document.getElementById("js").style.display = "none";
+
+       document.getElementById("w_django").style.display = "block";
+
+        }
+
+    function databasefunction1() {
+
+       document.getElementById("postgres").style.display = "block";
+
+       document.getElementById("mysql").style.display = "none";
+
+        }
+    function databasefunction2() {
+
+       document.getElementById("postgres").style.display = "none";
+
+       document.getElementById("mysql").style.display = "block";
+
+        }
+    </script>
+
+</div>
+</center>
+{% endblock %}

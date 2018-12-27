@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends "topics/base.html" %}
+{% block nav_item_work %}active{% endblock nav_item_work %}
+  {% block body_block %}
+  {% load staticfiles %}
+  <center><h1>Maps</h1></center>
+  <h3>click maps to enlarger</h3>
+  <div style="display:inline-block;">
+    <div class="container">
+      <img style="width:300px;" src="{% static "images/Maps/map.jpg" %}" onclick="window.open('/static/images/Maps/map.jpg', '_blank');">
+      <img style="width:500px;" src="{% static "images/Maps/map_2.jpg" %}" onclick="window.open('/static/images/Maps/map_2.jpg', '_blank');">
+      <img style="width:400px;" src="{% static "images/Maps/map_3.png" %}" onclick="window.open('/static/images/Maps/map_3.png', '_blank');">
+      <img style="width:300px;" src="{% static "images/Maps/map_4.jpg" %}" onclick="window.open('/static/images/Maps/map_4.jpg', '_blank');">
+      <img style="width:300px;" src="{% static "images/Maps/map_5.jpg" %}" onclick="window.open('/static/images/Maps/map_5.jpg', '_blank');">
+    </div>
+  </div>
+</center>
+  {% endblock %}
+</div>

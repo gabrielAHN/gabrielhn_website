@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends "topics/base.html" %}
+  {% block body_block %}
+  {% load staticfiles %}
+  <center>
+  <div class="container" style="color:white;display:inline-block;height:15cm;background:url('/static/images/contact.jpg'); background-size:cover;">
+    <h1 style="margin-top:11.5cm;margin-left: 1cm;font-weight: bold;font-size:60px"><u>Find me in:</u>
+    <a button class="btn btn-light" style="font-size:20px;margin-left:5px;margin-bottom:9px;" href="http://www.linkedin.com/in/gabriel-hidalgo-41742867" target="_blank">linkedin</a>
+    <a button class="btn btn-light" style="font-size:20px;margin-left:5px;margin-bottom:9px;" href="https://github.com/gh15hidalgo" target="_blank">Github</a>
+    <a button class="btn btn-light" style="font-size:20px;margin-left:5px;margin-bottom:9px;" href="mailto:gh15hidalgo@gmail.com" target="_blank">Email</a>
+    </h1>
+  </div>
+  <div style="font-size:15px;font-family:Gadugi;border: 7px solid #FCE25F;padding:4px;border-radius: 15px;width:15cm;margin-top:0.5cm;margin-bottom:1cm;">
+  <center>
+  <img width="400" src="https://ci4.googleusercontent.com/proxy/Dk8FOl4cdxiKMIoY55xoZL9gyRGvccQTifuPlt1Xj_0Tvs25REnBGsmMtJr4oPcYzhC3tEszp1gnlDB0gscjT9GLLIgztt2pyKCDUEPXR7PNew=s0-d-e1-ft#https://www.gabrielhn.com/static/images/Newsletter/cover.png" alt="">
+  <h6> Or join <b>City Learner</b> a service that filters through the most interesting websites about urban planning and cities into an email weekly.</h6>
+  <h3>
+  {% for message in messages %}
+        {% if "signup" in message.tags %}
+        {% endif %}
+        {{ message }}
+        {% endfor %}
+  </h3>
+  <h1 style="font-size:15px;font-family:'Berlin Sans FB">Sign-Up here:</h1>
+  <form method="POST">
+        {{form.as_p}}
+        {% csrf_token %}
+      <input type="submit" value="Submit" class="btn btn-light" style='font-weight:bold'>
+  </form>
+  </div>
+  {% endblock %}

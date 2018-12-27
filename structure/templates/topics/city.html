@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends "topics/base.html" %}
+{% block nav_item_work %}active{% endblock nav_item_work %}
+  {% block body_block %}
+  {% load staticfiles %}
+  <center>
+  <img width="700" src="https://ci4.googleusercontent.com/proxy/Dk8FOl4cdxiKMIoY55xoZL9gyRGvccQTifuPlt1Xj_0Tvs25REnBGsmMtJr4oPcYzhC3tEszp1gnlDB0gscjT9GLLIgztt2pyKCDUEPXR7PNew=s0-d-e1-ft#https://www.gabrielhn.com/static/images/Newsletter/cover.png" alt="">
+  <h1 style="font-size:60px;font-family:'Berlin Sans FB">Welcome</h1>
+  <p style="width:15cm;font-family:Gadugi;"><a style="font-size:20px;font-family:'Berlin Sans FB">City Learner</a> is a weekly email that filters through all of the recent urbanism topics and city news from my favorite website sources. I created this for myself to help spend more time reading content instead of searching through websites.</p>
+  <p style="width:15cm;font-family:Gadugi;"><b> Now I am offering this tool to any fellow City Learners out there!</b></p>
+
+  <h3>
+  {% for message in messages %}
+        {% if "signup" in message.tags %}
+        {% endif %}
+        {{ message }}
+        {% endfor %}
+  </h3>
+
+  <div>
+  <div class="row" style="font-size:15px;font-family:Gadugi;border: 7px solid #FCE25F;padding:4px;border-radius: 15px;width:7cm;margin-left:7cm;margin-right:10px;float:left">
+  <center>
+  <h1 style="font-size:20px;font-family:'Berlin Sans FB">Sign-Up here:</h1>
+  <form method="POST">
+        {{form.as_p}}
+        {% csrf_token %}
+      <input type="submit" name="btform1" value="Submit" class="btn btn-light" style='font-weight:bold'>
+  </form>
+  </div>
+
+  <div class="row" style="font-size:15px;font-family:Gadugi;border: 7px solid #5A8DAD;padding:4px;border-radius: 15px;width:7cm;margin-right:7cm;float:right">
+  <center>
+  <h5 style="font-size:15px;font-family:Berlin Sans FB;position:center">Let me know your favorite website, it might be added to future lists.</h5>
+  </center>
+  <form method="POST">
+        {{form2.as_p}}
+        {% csrf_token %}
+    <input type="submit" name="btform2" value="Submit" class="btn btn-light" style='font-weight:bold'>
+  </form>
+  </div>
+  </div>
+  <br style="clear: both">
+  <div class="container" style="margin-top:1cm;margin-bottom:2cm">
+  <center><h2 style="font-family:'Berlin Sans FB">Currently on the List</h2><center>
+      <p> Click to check them out, or sign-up above to get the best content every week from them</p>
+    <div class="container">
+      <img style="width:175px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDvAsd3k9bUVKJ6CXlJufDF_tVi6kyYq5_BDOZy2i9ehsfWBOs6Q" onclick="window.open('https://www.smartcitiesdive.com/', '_blank');">
+      <img style="width:200px;" src="https://placesjournal.org/wp-content/themes/places/img/fallback-logo.png" onclick="window.open('https://placesjournal.org/', '_blank');">
+      <img style="width:200px;" src="https://cdn.citylab.com/static/b/citylab/img/logos/logo_social_1200x630.png" onclick="window.open('https://www.citylab.com/', '_blank');">
+      <img style="width:200px;" src="https://www.planetizen.com/sites/all/themes/custom/plnz3/logo.png" onclick="window.open('https://www.planetizen.com/', '_blank');">
+      <img style="width:200px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhMjNWMQR17AuHThWZI8m5iaZrIFLeeKtR8oB0VfREPVTXky330Q" onclick="window.open('https://sidewalklabs.com/', '_blank');">
+      <img style="width:175px;" src="https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/12009662_905814886139695_5374948496562144396_n.png?_nc_cat=104&_nc_ht=scontent-lga3-1.xx&oh=0d30938e7ee477964221121279ebf5d6&oe=5C84F269" onclick="window.open('https://datasmart.ash.harvard.edu/', '_blank');"
+      <img style="width:200px;" src="https://pmcvariety.files.wordpress.com/2018/07/quartz-logo.png?w=960" onclick="window.open('https://qz.com/', '_blank');">
+      <img style="width:200px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/CARTO-logo.svg/1200px-CARTO-logo.svg.png" onclick="window.open('https://carto.com/', '_blank');">
+      <img style="width:200px;" src="https://cdn.vox-cdn.com/uploads/chorus_asset/file/9672633/VergeOG.0_1200x627.0.png" onclick="window.open('https://www.theverge.com/transportation', '_blank');">
+      <img style="width:200px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmKMTL7s8pHWi3lGcPnbXw5_bP4VXZIP2PgdXV5wr-u7tlTtgf" onclick="window.open('https://monocle.com/radio/shows/the-urbanist/', '_blank');">
+    </div>
+  </div>
+  {% endblock %}
+

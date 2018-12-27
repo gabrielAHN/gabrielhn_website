@@ -1,0 +1,32 @@
+.backgroundimage{
+   background-image: url('/static/images/me_2.jpg');
+   background-size: cover;
+}
+
+.backgroundimage2{
+   background-image: url('/static/images/contact.jpg');
+   background-size: cover;
+}
+
+h1{
+  font-family:'Raleway', sans-serif;
+  font-size: 100px;
+  font-weight: bold;
+}
+
+button{
+  font-family:'Raleway', sans-serif;
+}
+
+a.pink{
+  font-family:'Raleway', sans-serif;
+  font-size: 30px;
+}
+a.pink:hover{
+  text-shadow: 2px 2px 0px #FF00C4;
+}
+ span:hover{
+  font-family:'Raleway', sans-serif;
+  text-shadow: 2px 2px 0px #FF00C4;
+  box-shadow: 2px 2px 0px #FF00C4;
+}
