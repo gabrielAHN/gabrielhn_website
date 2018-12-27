@@ -21,7 +21,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'l)bc86%43p@und634gk(hbdd_nm22ksp!m2l1uy54yy8m!syx2'
+SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'learning_templates_3.wsgi.application'
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'ghidalgo$Newsletter',
-            'USER': 'ghidalgo',
-            'PASSWORD': 'froggerAH1',
-            'HOST': 'ghidalgo.mysql.pythonanywhere-services.com',
+            'NAME': 'DATABASE_NAME',
+            'USER': 'USERNAME',
+            'PASSWORD': 'PASSWORD',
+            'HOST': 'HOST',
         }
     }
 
@@ -93,16 +93,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'VALIDATOR',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'VALIDATOR',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'VALIDATOR',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'VALIDATOR',
     },
 ]
 
